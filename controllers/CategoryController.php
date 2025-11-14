@@ -1,18 +1,18 @@
 <?php
 class CategoryController{
-    private $CategoryModel;
+    private $categoryModel;
     public function __construct()
     {
-       $this->CategoryModel = new CategoryModel();
+       $this->categoryModel = new CategoryModel();
     }
     public function listCategories()
     {
-        $categories = $this->CategoryModel->getAllCategories();
+        $categories = $this->categoryModel->getAllCategories();
         require_once './views/category/list.php';
     }
     public function viewCategory($id)
     {
-        $category = $this->CategoryModel->getCategoryById($id);
+        $category = $this->categoryModel->getCategoryById($id);
         if ($category) {
             require_once './views/category/view.php';
         } else {
@@ -24,7 +24,7 @@ class CategoryController{
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $name = $_POST['name'];
             $description = $_POST['description'];
-            $this->CategoryModel->createCategory($name, $description);
+            $this->categoryModel->createCategory($name, $description);
             header('Location: index.php?controller=category&action=listCategories');
             exit();
         } else {
@@ -33,7 +33,7 @@ class CategoryController{
     }
     public function editCategory($id)
     {
-        $category = $this->CategoryModel->getCategoryById($id);
+        $category = $this->categoryModel->getCategoryById($id);
         if (!$category) {
             echo "Category not found.";
             return;
@@ -42,7 +42,7 @@ class CategoryController{
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $name = $_POST['name'];
             $description = $_POST['description'];
-            $this->CategoryModel->updateCategory($id, $name, $description);
+            $this->categoryModel->updateCategory($id, $name, $description);
             header('Location: index.php?controller=category&action=listCategories');
             exit();
         } else {
@@ -51,7 +51,10 @@ class CategoryController{
     }
     public function deleteCategory($id)
     {
-        $this->CategoryModel->deleteCategory($id);
+        $id = intval($id);
+        if ($id > 0) {
+            $this->categoryModel->deleteCategory($id);
+        }
         header('Location: index.php?controller=category&action=listCategories');
         exit();
     }
