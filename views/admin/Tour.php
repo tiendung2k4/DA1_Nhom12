@@ -4,7 +4,6 @@ $title = "Quản lí Tour";
 $current_page = "tour"; 
 ob_start();
 ?>
-
     
    <h1 class="mt-4">Quản lí Tour</h1>
 
@@ -22,80 +21,34 @@ ob_start();
     <div class="card-body">
         <table id="datatablesSimple" class="table table-hover">
             <thead>
+                <?php foreach ($danhSachTour as $tour): ?>
                 <tr>
                     <th>Mã Tour</th>
                     <th>Tên Tour</th>
                     <th>Giá</th>
-                    <th>Thời gian</th>
-                    <th>Số chỗ</th>
-                    <th>Trạng thái</th>
+                    <th>Mô tả</th>
+                    <th>Ngày khởi hành</th>
+                    <th>Ngày kết thúc</th>
                     <th>Hành động</th>
                 </tr>
             </thead>
-            <tfoot>
-                <tr>
-                    <th>Mã Tour</th>
-                    <th>Tên Tour</th>
-                    <th>Giá</th>
-                    <th>Thời gian</th>
-                    <th>Số chỗ</th>
-                    <th>Trạng thái</th>
-                    <th>Hành động</th>
-                </tr>
-            </tfoot>
+           
             <tbody>
                 <tr>
-                    <td>T001</td>
-                    <td>Tour Hà Nội - Sapa</td>
-                    <td>5.000.000đ</td>
-                    <td>3 ngày 2 đêm</td>
-                    <td>30</td>
-                    <td><span class="badge bg-success">Đang mở bán</span></td>
+                    <td><?= htmlspecialchars($tour['id_tour']) ?></td>
+                    <td><?= htmlspecialchars($tour['ten_tour']) ?></td>
+                    <td><?= htmlspecialchars($tour['gia']) ?></td>
+                    <td><?= htmlspecialchars($tour['mo_ta']) ?></td>
+                    <td><?= date('d/m/Y', strtotime($tour['ngay_khoi_hanh'])) ?></td>
+                    <td><?= date('d/m/Y', strtotime($tour['ngay_ket_thuc'])) ?></td>
                     <td>
                         <a href="#" class="btn btn-sm btn-primary" title="Xem"><i class="fas fa-eye"></i></a>
                         <a href="#" class="btn btn-sm btn-warning" title="Sửa"><i class="fas fa-edit"></i></a>
                         <a href="#" class="btn btn-sm btn-danger" title="Xóa"><i class="fas fa-trash"></i></a>
                     </td>
                 </tr>
-                <tr>
-                    <td>T002</td>
-                    <td>Tour Đà Lạt</td>
-                    <td>3.500.000đ</td>
-                    <td>2 ngày 1 đêm</td>
-                    <td>25</td>
-                    <td><span class="badge bg-success">Đang mở bán</span></td>
-                    <td>
-                        <a href="#" class="btn btn-sm btn-primary"><i class="fas fa-eye"></i></a>
-                        <a href="#" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i></a>
-                        <a href="#" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>T003</td>
-                    <td>Tour Phú Quốc</td>
-                    <td>8.900.000đ</td>
-                    <td>4 ngày 3 đêm</td>
-                    <td>0</td>
-                    <td><span class="badge bg-secondary">Hết chỗ</span></td>
-                    <td>
-                        <a href="#" class="btn btn-sm btn-primary"><i class="fas fa-eye"></i></a>
-                        <a href="#" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i></a>
-                        <a href="#" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>T004</td>
-                    <td>Tour Nha Trang</td>
-                    <td>4.200.000đ</td>
-                    <td>3 ngày 2 đêm</td>
-                    <td>15</td>
-                    <td><span class="badge bg-warning">Sắp khởi hành</span></td>
-                    <td>
-                        <a href="#" class="btn btn-sm btn-primary"><i class="fas fa-eye"></i></a>
-                        <a href="#" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i></a>
-                        <a href="#" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></a>
-                    </td>
-                </tr>
+                <?php endforeach; ?>
+                
             </tbody>
         </table>
     </div>

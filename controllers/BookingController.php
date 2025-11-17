@@ -8,7 +8,7 @@ class BookingController {
     public function listBookings()
     {
         $bookings = $this->bookingModel->getAllBookings();
-        require_once './views/bookings/list.php';
+        require_once './views/admin/Booking.php';
     }
     public function viewBooking($id)
     {
