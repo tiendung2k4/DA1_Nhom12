@@ -138,4 +138,8 @@ class UsersModel extends BaseModel {
         }
     }
 }
+<<<<<<< HEAD
 ?>
+=======
+?>
+>>>>>>> 8b1d46818613651509587ab7cdc54e6be59ce197

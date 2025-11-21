@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+
+=======
+>>>>>>> 8b1d46818613651509587ab7cdc54e6be59ce197
 <?php
 class CategoryController{
     private $categoryModel;
@@ -31,7 +35,11 @@ class CategoryController{
             require_once './views/category/create.php';
         }
     }
+<<<<<<< HEAD
+    public function updateCategory  ($id)
+=======
     public function editCategory($id)
+>>>>>>> 8b1d46818613651509587ab7cdc54e6be59ce197
     {
         $category = $this->categoryModel->getCategoryById($id);
         if (!$category) {
