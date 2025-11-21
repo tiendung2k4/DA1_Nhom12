@@ -14,7 +14,7 @@ ob_start();
             <i class="fas fa-calendar-check me-1"></i>
             Danh sách Tour
         </div>
-        <a href="#" class="btn btn-sm btn-success">
+        <a href="?act=createTour" class="btn btn-sm btn-success">
             <i class="fas fa-plus"></i> Thêm Tour
         </a>
     </div>
@@ -68,5 +68,5 @@ ob_start();
 
 <?php
 $content = ob_get_clean();
-require 'Master.php';
+require './views/admin/Master.php';
 ?>
