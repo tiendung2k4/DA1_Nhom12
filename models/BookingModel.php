@@ -7,8 +7,22 @@ class BookingModel extends BaseModel {
     public $check_out;
     public $status;
 
-    public function getAllBookings() {
-        $sql = "SELECT * FROM bookings ORDER BY booking_id DESC";
+    public function getAllBookings()
+    {
+        $sql = "SELECT 
+    booking.id_booking,
+    booking.ngay_dat,
+    booking.so_nguoi,
+    booking.tong_tien,
+    booking.trang_thai,
+    khachhang.ho_ten AS ten_khachhang,
+    tour.ten_tour AS ten_tour
+FROM 
+    booking
+    INNER JOIN khachhang ON booking.id_khachhang = khachhang.id_khachhang
+    INNER JOIN tour ON booking.id_tour = tour.id_tour
+ORDER BY 
+    booking.ngay_dat DESC;";
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);

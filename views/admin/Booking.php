@@ -65,9 +65,9 @@ ob_start();
         <table id="datatablesSimple" class="table table-hover">
             <thead>
                 <tr>
-                    <th>Mã Booking</th>
-                    <th>Khách hàng</th>
-                    <th>Tour</th>
+                    <th>Mã <br>Booking</th>
+                    <th>Tên Khách hàng</th>
+                    <th>Tên Tour</th>
                     <th>Ngày đặt</th>
                     <th>Số người</th>
                     <th>Tổng tiền</th>
@@ -75,56 +75,39 @@ ob_start();
                     <th>Hành động</th>
                 </tr>
             </thead>
-           
+            
+            <?php foreach ($bookings as $booking): ?>
             <tbody>
-                <tr>
-                    <td>BK001</td>
-                    <td>Nguyễn Văn A</td>
-                    <td>Tour Sapa 3N2Đ</td>
-                    <td>14/11/2025</td>
-                    <td>2</td>
-                    <td>10.000.000đ</td>
-                    <td><span class="badge bg-success">Đã xác nhận</span></td>
+                <tr></tr>
+                    <td><?php echo $booking['id_booking']; ?></td>
+                    <td><?php echo $booking['ten_khachhang']; ?></td>
+                    <td><?php echo $booking['ten_tour']; ?></td>
+                    <td><?php echo $booking['ngay_dat']; ?></td>
+                    <td><?php echo $booking['so_nguoi']; ?></td>
+                    <td><?php echo number_format($booking['tong_tien'], 0, ',', '.'); ?> VND</td>
                     <td>
-                        <a href="#" class="btn btn-sm btn-primary" title="Xem">
-                            <i class="fas fa-eye"></i>
-                        </a>
-                        <a href="#" class="btn btn-sm btn-warning" title="Sửa">
-                            <i class="fas fa-edit"></i>
-                        </a>
-                        <a href="#" class="btn btn-sm btn-danger" title="Xóa">
-                            <i class="fas fa-trash"></i>
-                        </a>
+                        <?php 
+                            switch ($booking['trang_thai']) {
+                                case 'Chờ xác nhận':
+                                    echo '<span class="badge bg-warning text-dark">Chờ xác nhận</span>';
+                                    break;
+                                case 'Đã xác nhận':
+                                    echo '<span class="badge bg-success">Đã xác nhận</span>';
+                                    break;
+                                case 'Đã hủy':
+                                    echo '<span class="badge bg-danger">Đã hủy</span>';
+                                    break;
+                                default:
+                                    echo '<span class="badge bg-secondary">Không xác định</span>';
+                            }
+                        ?>
                     </td>
-                </tr>
-                <tr>
-                    <td>BK002</td>
-                    <td>Trần Thị B</td>
-                    <td>Tour Đà Lạt</td>
-                    <td>13/11/2025</td>
-                    <td>1</td>
-                    <td>3.500.000đ</td>
-                    <td><span class="badge bg-warning">Chờ xác nhận</span></td>
                     <td>
-                        <a href="#" class="btn btn-sm btn-primary"><i class="fas fa-eye"></i></a>
-                        <a href="#" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i></a>
-                        <a href="#" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></a>
+                        <a href="#" class="btn btn-sm btn-primary"><i class="fas fa-edit"></i> Sửa</a>
+                        <a href="#" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i> Xóa</a>
                     </td>
-                </tr>
-                <tr>
-                    <td>BK003</td>
-                    <td>Lê Văn C</td>
-                    <td>Tour Phú Quốc</td>
-                    <td>12/11/2025</td>
-                    <td>4</td>
-                    <td>28.000.000đ</td>
-                    <td><span class="badge bg-danger">Đã hủy</span></td>
-                    <td>
-                        <a href="#" class="btn btn-sm btn-primary"><i class="fas fa-eye"></i></a>
-                        <a href="#" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i></a>
-                        <a href="#" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></a>
-                    </td>
-                </tr>
+                
+                <?php endforeach; ?>
             </tbody>
         </table>
     </div>
@@ -132,5 +115,5 @@ ob_start();
 
 <?php
 $content = ob_get_clean();
-require 'Master.php'; // Gọi layout chính
+require './views/admin/Master.php'; // Gọi layout chính
 ?>
