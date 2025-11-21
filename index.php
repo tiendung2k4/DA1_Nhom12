@@ -1,6 +1,7 @@
 <?php
 // public/index.php
 session_start();
+require_once 'models/BaseModel.php';
 require_once 'commons/env.php';
 require_once 'commons/function.php';
 require_once 'models/TourModel.php';

@@ -64,9 +64,8 @@ ob_start();
     <div class="card-body">
         <table id="datatablesSimple" class="table table-hover">
             <thead>
-                <?php foreach ($bookings as $booking): ?>
                 <tr>
-                    <th>Mã Booking</th>
+                    <th>Mã <br>Booking</th>
                     <th>Tên Khách hàng</th>
                     <th>Tên Tour</th>
                     <th>Ngày đặt</th>
@@ -76,7 +75,8 @@ ob_start();
                     <th>Hành động</th>
                 </tr>
             </thead>
-           
+            
+            <?php foreach ($bookings as $booking): ?>
             <tbody>
                 <tr></tr>
                     <td><?php echo $booking['id_booking']; ?></td>

@@ -21,7 +21,6 @@ ob_start();
     <div class="card-body">
         <table id="datatablesSimple" class="table table-hover">
             <thead>
-                <?php foreach ($danhSachTour as $tour): ?>
                 <tr>
                     <th>Mã Tour</th>
                     <th>Tên Tour</th>
@@ -32,7 +31,8 @@ ob_start();
                     <th>Hành động</th>
                 </tr>
             </thead>
-           
+            <?php foreach ($danhSachTour as $tour): ?>
+            
             <tbody>
                 <tr>
                     <td><?= htmlspecialchars($tour['id_tour']) ?></td>
