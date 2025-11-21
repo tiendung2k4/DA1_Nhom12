@@ -79,7 +79,11 @@ class UsersController{
         }
     }
     }
+<<<<<<< HEAD
     public function updateUser  ($id)
+=======
+    public function editUser($id)
+>>>>>>> 8b1d46818613651509587ab7cdc54e6be59ce197
     {
         $user = $this->UserModel->findUser($id);
         if (!$user) {

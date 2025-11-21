@@ -34,6 +34,7 @@ class BookingController {
             require_once './views/bookings/create.php';
         }
     }
+<<<<<<< HEAD
     public function updateBooking($id)
     {
         $booking = $this->bookingModel-> getBookingById($id);
@@ -53,6 +54,8 @@ class BookingController {
             require_once './views/bookings/edit.php';
         }
     }
+=======
+>>>>>>> 8b1d46818613651509587ab7cdc54e6be59ce197
     public function deleteBooking($id)
     {
        $id = $_POST['booking_id'];

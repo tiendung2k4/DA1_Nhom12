@@ -32,6 +32,7 @@ class BookingModel extends BaseModel {
             ':status' => $status
         ]);
     }
+<<<<<<< HEAD
     public function updateBooking($id, $customer_id, $room_id, $check_in, $check_out, $status) {
         $sql = "UPDATE bookings SET customer_id = :customer_id, room_id = :room_id, check_in = :check_in, check_out = :check_out, status = :status WHERE booking_id = :id";
         $stmt = $this->pdo->prepare($sql);
@@ -44,6 +45,8 @@ class BookingModel extends BaseModel {
             ':status' => $status
         ]);
     }
+=======
+>>>>>>> 8b1d46818613651509587ab7cdc54e6be59ce197
     public function deleteBooking($id) {
         $sql = "DELETE FROM bookings WHERE booking_id = :id";
         $stmt = $this->pdo->prepare($sql);
