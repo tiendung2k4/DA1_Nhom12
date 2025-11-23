@@ -8,7 +8,7 @@ class UsersController{
     public function listUsers()
     {
         $users = $this->UserModel->getAllUsers();
-        require_once './views/users/list.php';
+        require_once './views/admin/HDV/HDV.php';
     }
     public function viewUser($id)
     {

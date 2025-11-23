@@ -4,10 +4,15 @@ session_start();
 require_once 'models/BaseModel.php';
 require_once 'commons/env.php';
 require_once 'commons/function.php';
+
 require_once 'models/TourModel.php';
 require_once 'models/BookingModel.php';
+require_once 'models/UsersModel.php';
+
 require_once 'controllers/TourController.php';
 require_once 'controllers/BookingController.php';
+require_once 'controllers/UsersController.php';
+
 
 
 // Lấy action
@@ -17,7 +22,7 @@ match ($act) {
     '/', 'tour' => (new TourController())->Home(), 
     'booking' => (new BookingController())->listBookings(),
     'createTour' => (new TourController())->createTour(),
-    'huongdanvien' => require_once 'views/admin/HDV.php',
+    'huongdanvien' => (new UsersController())->listUsers(),
     'khachhang' => require_once 'views/admin/KhachHang.php',
     'phong' => require_once 'views/admin/Phong.php',
 

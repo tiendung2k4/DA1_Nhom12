@@ -9,15 +9,27 @@ class UsersModel extends BaseModel {
     public $phone;
 
     // Lấy toàn bộ người dùng
-    public function getAllUsers() {
-        try {
-            $sql = "SELECT * FROM users ORDER BY user_id DESC";
-            $stmt = $this->pdo->query($sql);
-            return $stmt->fetchAll(PDO::FETCH_ASSOC);
-        } catch (PDOException $e) {
-            echo "Lỗi: " . $e->getMessage();
-            return [];
-        }
+   public function getAllUsers()
+    {
+        $sql = "SELECT 
+    hdv.id_hdv,
+    hdv.ho_ten,
+    hdv.sdt,
+    hdv.email,
+    hdv.dia_chi,
+    hdv.id_taikhoan,
+    tk.ten_dang_nhap,
+    tk.vai_tro,
+    tk.trang_thai AS trang_thai_taikhoan
+FROM 
+    huongdanvien hdv
+LEFT JOIN 
+    taikhoan tk ON hdv.id_taikhoan = tk.id_taikhoan
+ORDER BY 
+    hdv.ho_ten ASC;";
+
+        $stmt = $this->pdo->query($sql);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
     //  Tìm user theo ID
